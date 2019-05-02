@@ -1,5 +1,6 @@
 # custom
-theme: minimal-mistakes-jekyll
+# theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.16.2"
 excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
 timezone: "Asia/Shanghai"
 
