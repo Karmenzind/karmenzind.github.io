@@ -8,6 +8,7 @@ tags:
     - django
 ---
 
+Pytest文档地址：<https://docs.pytest.org/en/latest/contents.html>
 
 ## 兼容性
 
@@ -27,7 +28,7 @@ def sql_cli():
 
 ### Teardown
 
-更好的方式：
+A better way:
 
 ```python
 @pytest.fixture(scope=...)
