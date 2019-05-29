@@ -1,5 +1,5 @@
 ---
-title: "Pytest文档阅读笔记"
+title: "单元测试相关笔记与思考"
 categories:
     - Blog
 tags:
@@ -7,6 +7,7 @@ tags:
     - unittest
     - django
 ---
+
 
 Pytest文档地址：<https://docs.pytest.org/en/latest/contents.html>
 
@@ -78,3 +79,8 @@ request-context请求上下文([doc](https://docs.pytest.org/en/latest/fixture.h
 
 [Using fixtures from classes, modules or projects](<https://docs.pytest.org/en/latest/fixture.html#using-fixtures-from-classes-modules-or-projects>)
 
+
+## 其他
+
+- 《Python Web》提及单元测试的placeholder写法，此基础上后续完善会简单许多
+- 这里显然需要幂等原则
