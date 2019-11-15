@@ -26,7 +26,6 @@ def sql_cli():
     return SQLClient(...)
 ```
 
-
 ### Teardown
 
 A better way:
