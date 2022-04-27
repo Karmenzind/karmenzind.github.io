@@ -103,7 +103,7 @@ analytics:
 author:
   name             : "kmz"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "a pathetic coder"
+  bio              : "a coder"
   location         : "/tmp"
   email            : "valesail7@gmail.com"
   links:
