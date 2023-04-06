@@ -1,10 +1,8 @@
 ---
 title: "Magicbook R5安装Manjaro的效果和问题"
-categories:
-    - Blog
-tags:
-    - laptop
-    - linux
+date: 2019-04-07 01:01:01
+categories: [Blog]
+tags: [laptop, linux]
 ---
 
 
