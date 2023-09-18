@@ -29,7 +29,7 @@ Your call!
 
 上述尝试证实了继续使用VARCHAR是不可取的，于是最终采取的解决措施如下，即创建一个新表（语句省略了其他字段），然后为`message_id`加上UNIQUE KEY：
 
-```mysql
+```sql
 CREATE TABLE new_message (
     message_id TEXT,
     UNIQUE KEY idx_message_id (message_id (255))
@@ -38,7 +38,7 @@ CREATE TABLE new_message (
 
 `message_id`无法再作为主键，如果尝试运行如下语句，依然会遇到1170错误：
 
-```mysql
+```sql
 CREATE TABLE new_message (
     message_id TEXT PRIMARY KEY,
     UNIQUE KEY idx_message_id (message_id (255))

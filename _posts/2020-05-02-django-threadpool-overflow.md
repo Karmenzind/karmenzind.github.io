@@ -16,7 +16,7 @@ tags:
 
 这里通过简要的代码来复现这个过程：
 
-```python3
+```python
 def compute(job):
     result = FooModel.objects.filter(...).aggregate(...)
     return BarModel.objects.create(result)
@@ -39,7 +39,7 @@ for i in range(0, 100):
 
 上述代码在Django交互环境中运行结束后，PostgreSQL的活动表`pg_stat_activity`查询结果如下：
 
-```
+```console
 mypostgresdb=# select count(*) from pg_stat_activity;
  count 
 -------
@@ -49,7 +49,7 @@ mypostgresdb=# select count(*) from pg_stat_activity;
 
 而奇怪的是，此时通过Django自身并无法感知到这些连接的存在：
 
-```
+```console
 >>> from django.db import connections
 >>> print(len(connections.all()))
 >>> 2
@@ -57,7 +57,7 @@ mypostgresdb=# select count(*) from pg_stat_activity;
 
 同时通过线程模块可以看到，所有的worker线程都已经关闭：
 
-```
+```console
 >>> import threading
 >>> threading.enumerate()
 [<_MainThread(MainThread, started 140660203321088)>]
@@ -69,7 +69,7 @@ mypostgresdb=# select count(*) from pg_stat_activity;
 
 基于上述的分析结果，我对ThreadPoolExecutor进行了封装，在每次执行任务时，确保连接被关闭。具体代码如下：
 
-```python3
+```python
 from functools import wraps
 from concurrent.futures import ThreadPoolExecutor
 from django.db import connection
@@ -109,7 +109,7 @@ class DjangoConnectionThreadPoolExecutor(ThreadPoolExecutor):
 
 有了这样一层封装之后，针对之前用到线程池的代码，修改一下线程池初始化过程就可以无缝切换，如下所示：
 
-```python3
+```python
 with DjangoConnectionThreadPoolExecutor(max_workers=15) as executor:
     results = list(executor.map(func, args_list))
 ```
