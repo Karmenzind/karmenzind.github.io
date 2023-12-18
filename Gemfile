@@ -5,6 +5,10 @@ source "https://gems.ruby-china.com/"
 
 gem "jekyll-theme-chirpy", "~> 6.2", ">= 6.2.2"
 
+group :jekyll_plugins do
+  gem 'jekyll-spaceship'
+end
+
 group :test do
   gem "html-proofer", "~> 4.4"
 end
