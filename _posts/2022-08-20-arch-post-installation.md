@@ -81,4 +81,7 @@ TODO
 
 - 目前只有refind作为boot loader的出错几率和被覆盖几率最小，原因不明，对华为设备充满厌恶，完全不想明白
 - refind loader被覆盖可能原因：在refind页面选择“exit”（目前从Win正常退出未发现覆盖情况）
-- 解决措施：Bootable Flash启动，进Arch Chroot环境，直接refind-install
+- 双启动refind被Windows覆盖时：
+  - 用Arch USB启动，[iwctl联网](https://wiki.archlinux.org/title/Iwd#iwctl)
+  - 挂root和boot分区，然后pacstrap方式安装refind
+  - chroot -> refind-install
