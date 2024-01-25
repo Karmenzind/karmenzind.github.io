@@ -3,6 +3,8 @@
 # source "https://rubygems.org"
 source "https://gems.ruby-china.com/"
 
+gem "rake"
+
 gem "jekyll-theme-chirpy", "~> 6.2", ">= 6.2.2"
 
 group :jekyll_plugins do
