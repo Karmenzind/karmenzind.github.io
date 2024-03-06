@@ -7,30 +7,6 @@ tags:
     - archlinux
 ---
 
-<!-- vim-markdown-toc GFM -->
-
-* [目前状态](#目前状态)
-  * [暂未解决问题](#暂未解决问题)
-* [Arch安装配置相关](#arch安装配置相关)
-  * [EFI分区问题](#efi分区问题)
-  * [refind安装配置](#refind安装配置)
-  * [图形环境及其它](#图形环境及其它)
-* [ASUS官方工具](#asus官方工具)
-  * [G14源（不推荐）](#g14源不推荐)
-  * [Rog Control Center](#rog-control-center)
-  * [asusctl](#asusctl)
-  * [supergfxctl](#supergfxctl)
-* [键盘相关](#键盘相关)
-  * [ROG键召唤Rog Control Center](#rog键召唤rog-control-center)
-* [已（凑合）解决问题归纳](#已凑合解决问题归纳)
-* [我的配置文件](#我的配置文件)
-  * [i3wm](#i3wm)
-  * [supergfxctl](#supergfxctl-1)
-  * [libinput 触摸板](#libinput-触摸板)
-* [结尾](#结尾)
-
-<!-- vim-markdown-toc -->
-
 > 本文会持续更新，供有和我一样情况的朋友参考。目前主要记录我自己遇到的新东西，其他地方一笔带过，如果有问题请反馈，我会补充细节。
 
 一万预算买笔记本，挑了天选5Pro（下文用TUF代指）i9+4060版（性价比最高的是A卡+4070，但没货），选它最重要的原因大概是：
