@@ -7,8 +7,6 @@ tags:
     - archlinux
 ---
 
-> 本文会持续更新，供有和我一样情况的朋友参考。目前主要记录我自己遇到的新东西，其他地方一笔带过，如果有问题请反馈，我会补充细节。
-
 一万预算买笔记本，挑了天选5Pro（下文用TUF代指）i9+4060版（性价比最高的是A卡+4070，但没货），选它最重要的原因大概是：
 
 - 看见华硕官方有个[Linux专题](https://asus-linux.org/)，出了[专门的工具集合](https://gitlab.com/asus-linux/asusctl)，有[两个大佬](https://gitlab.com/asus-linux/asusctl/-/project_members)在持续维护，显得很重视的样子
