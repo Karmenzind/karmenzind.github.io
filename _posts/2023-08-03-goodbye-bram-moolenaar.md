@@ -4,10 +4,9 @@ categories:
     - Blog
 tags:
     - vim
-img_path: "/assets/posts/2023-08-03-goodbye-bram-moolenaar"
 ---
 
-![email](bram.png){: .right w="350" h="600" .shadow }
+![email](../assets/posts/2023-08-03-goodbye-bram-moolenaar/bram.png){: .right w="350" h="600" .shadow }
 
 在病床上看到Bram Moolenaar去世的消息。
 

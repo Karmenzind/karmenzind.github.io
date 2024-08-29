@@ -5,7 +5,6 @@ categories:
 tags:
     - auth
     - .net
-img_path: "/assets/posts/2023-12-17-nvim-with-csharp"
 ---
 
 Updates: 
@@ -25,7 +24,7 @@ Updates:
 
 这个语言长得太像JAVA了，真难看
 
-![](error.png)
+![](../assets/posts/2023-12-17-nvim-with-csharp/error.png)
 
 
 ## 配置

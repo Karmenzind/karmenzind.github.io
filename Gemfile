@@ -16,3 +16,10 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# XXX (k): <2024-08-29 17:12> not sure if necessary
+gem "rake"
+gem "http_parser.rb"
+if RUBY_PLATFORM =~ /linux-musl/
+  gem "jekyll-sass-converter"
+end

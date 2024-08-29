@@ -66,7 +66,7 @@ TUF默认的硬盘（N1）和系统保持原样，另外加了一块硬盘（N2�
 
 我懒当然选1，直接挂载N1的EFI分区到/boot，最终分区情况如下：
 
-<img src="../assets/posts/2024-02-24-asus-tuf-with-archlinux/lsblk.png" style="zoom:80%;" />
+<img src="../assets/posts/2024-02-24-asus-tuf-with-archlinux/lsblk.png" style="zoom:80%;"  alt="Output of the lsblk command showing the disk and partition structure" />
 
 我这里给N2分了一半作为NTFS分区，用于和Win共享数据（例如给某蒸汽平台做分库……）。
 

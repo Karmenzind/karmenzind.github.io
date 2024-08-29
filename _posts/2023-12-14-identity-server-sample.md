@@ -5,7 +5,6 @@ categories:
 tags:
     - auth
     - .net
-img_path: "/assets/posts/2023-12-14-identity-server-sample"
 ---
 
 [IdentityServer](https://github.com/DuendeSoftware/IdentityServer)下面简称IS，当前活跃版本是v6，即将正式发布v7。
@@ -256,7 +255,7 @@ Trusting the HTTPS development certificate was requested. Trusting the certifica
 
 根据文档建议，拿这个Token去jwt.ms尝试Decode一下（当然也可以直接自己解码），可以直接得到前两段的信息：
 
-![](jwt_ms.png)
+![](../assets/posts/2023-12-14-identity-server-sample/jwt_ms.png)
 
 
 用Token去请求API服务的接口获得了完整的identity信息：
@@ -309,7 +308,7 @@ Trusting the HTTPS development certificate was requested. Trusting the certifica
 
 IS内置对OIDC的支持，只是需要开发者提供UI，Pages下面是每个页面源码，cshtml这种混合方式和之前用过的某些模板语言还真挺像。
 
-![](pages_code.png)
+![](../assets/posts/2023-12-14-identity-server-sample/pages_code.png)
 
 `ConfigureServices`中明显比第一个Sample多了许多内容，看了下主要是三个部分：
 - UI支持，通过注册RazerPages和静态页面
@@ -327,11 +326,11 @@ IS内置对OIDC的支持，只是需要开发者提供UI，Pages下面是每个�
 
 启动后就是一个完整的页面，乍一看还以为是文档，但其实是几个路由。
 
-![](5001_home.png)
+![](../assets/posts/2023-12-14-identity-server-sample/5001_home.png)
 
 现在因为只有一个Server，每个路由点进去都会被重定向到登陆：
 
-![](login.png)
+![](../assets/posts/2023-12-14-identity-server-sample/login.png)
 
 显然后续会通过图中这几种方式测试登陆。
 
@@ -351,13 +350,13 @@ IS内置对OIDC的支持，只是需要开发者提供UI，Pages下面是每个�
 
 现在启动Web Client，和5002端口绑定，用浏览器打开https://localhost:5002之后直接跳转到了5001，链接中还附带了跳回5002的重定向信息。
 
-![](5002_open.png)
+![](../assets/posts/2023-12-14-identity-server-sample/5002_open.png)
 
 此时它已经与IS服务完成了握手。
 
 尝试登陆Alice的账号，跳转回了5002，页面显示出完整的Alice身份信息和Cookies属性。
 
-![](alice.png)
+![](../assets/posts/2023-12-14-identity-server-sample/alice.png)
 
 从F12控制台中也能看到`https://localhost:5002/`接口请求头的Cookie中所用的正是这些信息。
 
@@ -365,15 +364,15 @@ IS内置对OIDC的支持，只是需要开发者提供UI，Pages下面是每个�
 
 直接选择Google登陆，不出所料报错了：
 
-![](google_try.png)
+![](../assets/posts/2023-12-14-identity-server-sample/google_try.png)
 
 用人家的账号登陆，当然得报备才行。此处需要在Google Cloud平台注册个app，获得授权凭据：
 
-![](google.png)
+![](../assets/posts/2023-12-14-identity-server-sample/google.png)
 
 需要在配置中加入授权重定向URI：
 
-![](google_app.png)
+![](../assets/posts/2023-12-14-identity-server-sample/google_app.png)
 
 此处安全起见，.NET有[专门的方式](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/social/google-logins?view=aspnetcore-6.0)存储ClientID和Secret
 
@@ -384,15 +383,15 @@ dotnet user-secrets set "Authentication:Google:ClientSecret" "<client-secret>"
 
 此时再重新启动Server，尝试Google登陆，出现了用户认证页面：
 
-![](google_ok.png)
+![](../assets/posts/2023-12-14-identity-server-sample/google_ok.png)
 
 还挺神奇，居然能用这个不存在的东西来登陆。然而此时开始了无限加载：
 
-![](google_wait.png)
+![](../assets/posts/2023-12-14-identity-server-sample/google_wait.png)
 
 查了下发现是重定向的接口需要一段时间才能生效，等待几个小时后重试：
 
-![](google_after.png)
+![](../assets/posts/2023-12-14-identity-server-sample/google_after.png)
 
 终于成功，此时amr的值已经变成了external，识别为外部认证机制。（虽然有梯子，但登陆过程几乎有一大半几率失败，需要重试多次，猜测Google并没有分配多少资源给测试版本的免费App）
 
@@ -422,7 +421,7 @@ Web Client也需要对这两项做相应的修改，在oidc的options中增加`o
 
 此时用bob账户登陆:5002，访问`/CallApi`，就能看到在第一个Sample中通过Client程序直接调用的接口在页面上呈现出来：
 
-![](callapi.png)
+![](../assets/posts/2023-12-14-identity-server-sample/callapi.png)
 
 从这里出发，就需要考虑token缓存、存储、失效刷新，这些都是以前在实际项目中做过的内容。
 
@@ -445,19 +444,19 @@ Web Client也需要对这两项做相应的修改，在oidc的options中增加`o
 但初始化数据后看了一下，确实没想到有这么多内容：
 
 
-![](tables.png)
+![](../assets/posts/2023-12-14-identity-server-sample/tables.png)
 
 挺像Django初始化之后生成的大量的和用户权限相关的表。虽然目前只有少数的表有内容：
 
-![](table_data.png)
+![](../assets/posts/2023-12-14-identity-server-sample/table_data.png)
 
 其中信息最多的应该还是`Clients`这个表：
 
-![](table_clients.png)
+![](../assets/posts/2023-12-14-identity-server-sample/table_clients.png)
 
 尝试登陆了一下之后，发现PersistedGrants中有新的数据产生，正是当前的Session：
 
-![](table_session.png)
+![](../assets/posts/2023-12-14-identity-server-sample/table_session.png)
 
 此时基于IdentityServer的系列流程的相关数据都已经实现了持久化。
 
@@ -473,7 +472,7 @@ Duende提供了名为BFF的库来辅助这一实现，在这里后端负责所�
 
 代码中增加了JavaScriptClient，是基于Duende.BFF实现，整体机制还是类似于前面的WebClient，只是把Razor Pages完成的功能交由BFF去实现。简单的静态文件整体作用一览无余：
 
-![](index_js.png)
+![](../assets/posts/2023-12-14-identity-server-sample/index_js.png)
 
 而JS文件中则是调用了几个`/bff`开头的接口，可见是直接与BFF框架功能交互。
 
@@ -483,13 +482,13 @@ Duende提供了名为BFF的库来辅助这一实现，在这里后端负责所�
 
 运行之后是简单的页面：
 
-![](js_page.png)
+![](../assets/posts/2023-12-14-identity-server-sample/js_page.png)
 
 这简陋的页面不禁让人怀疑作者搞了这么多示例代码之后已经累得不想再写一个JS版本的登陆页面，毕竟IS服务用Razor Pages做的UI还有模有样的。
 
 然后就是与前面相同的OIDC协议交互，点击Login后跳转到5001端口的登陆页面，继续用bob登入，跳转回到JS页面，获得与前面类似的Client信息，但是其中部分字段已经变成了bff：
 
-![](js_bob.png)
+![](../assets/posts/2023-12-14-identity-server-sample/js_bob.png)
 
 Remote API即调用Api服务的`/identity`接口，也是直接展示到下方。点击Logout之后能够成功跳转到5001的登出页面。
 

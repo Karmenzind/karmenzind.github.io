@@ -1,11 +1,15 @@
-# docker run -it --rm \
-#     --volume="$PWD:/srv/jekyll" \
-#     -p 0.0.0.0:4000:4000 jekyll/jekyll:minimal \
-#     jekyll serve
-
 case $1 in
 --build)
   docker build -t blog .
+  ;;
+--test)
+  docker run -it \
+    --rm \
+    -v $PWD:/app \
+    blog \
+    bundle exec htmlproofer _site \
+    --disable-external \
+    --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
   ;;
 *)
   docker run -it \

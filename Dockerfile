@@ -6,8 +6,8 @@ ADD . /app
 WORKDIR /app
 
 RUN apt update -y \
-  && apt install -y build-essential \
+  && apt install -y build-essential curl \
   && bundle install \
   && apt remove -y build-essential
 
-CMD [ "bundle", "exec", "jekyll", "serve", "-l", "-H", "0.0.0.0" ]
+CMD [ "bundle", "exec", "jekyll", "serve", "-l", "-H", "0.0.0.0", "--incremental" ]
