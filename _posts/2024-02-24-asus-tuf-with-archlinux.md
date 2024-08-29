@@ -129,7 +129,7 @@ ASUS工具还支持一个`AsusMuxDgpu`模式，看字面意思以为是华硕优
 
 ## ASUS官方工具
 
-### G14源（不推荐）
+### G14源
 
 Archwiki和[ASUS官方指南](https://asus-linux.org/guides/arch-guide/)都优先提到了G14这个repo，也就是在pacman.conf中添加：
 
@@ -164,6 +164,15 @@ Server = https://arch.asus-linux.org
 
 > 我想重新映射这个键，给它加个提醒，但捕获不到它的键码（见下文）
 
+#### 重启之后充电限制失效
+
+我目前直接修改的systemd设置（`systemctl edit asusctl`），加上了
+
+```
+[Service]
+ExecStartPost=/bin/asusctl -c 80
+```
+
 ### supergfxctl
 
 supergfxctl是asusctl推荐的混合输出方式，因此不再考虑optimus manager（wiki建议直接卸载optimus-manager）。
@@ -190,6 +199,12 @@ supergfxctl是asusctl推荐的混合输出方式，因此不再考虑optimus man
 
 它还支持VFIO，但我暂时没有这个需要，后续用到再探究。
 
+### G14版本内核
+
+更新内核后需要进行的操作：
+- (optional) 移除原有内核
+- 重新生成initramfs：`sudo mkinitcpio -k 6.8.2-arch2-1.1-g14 -g /boot/initramfs-linux-g14.img -S autodetect ` 
+- 重新安装驱动和ASUS工具
 
 
 ## 键盘相关
